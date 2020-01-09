@@ -1,0 +1,158 @@
+函数的声明：function函数名（）{函数体}
+函数的调用：函数名（）
+函数的参数 function fn（参数1，参数2）{}
+	   函数声明时写的都是形参
+	  函数参数的默认值 有了默认值可以不用传参
+
+return：返回函数的值；结束函数的执行
+
+函数的声明方式：有名函数function（函数名）{}；
+		匿名函数var fn=function（）{}没有函数名的都叫匿名函数
+ 
+
+
+BOM浏览器对象模型
+	BOM作用：提供了一系列对象用于与浏览器进行交互。这些对象通常称为BOM：获取浏览器信息，操作浏览器。
+	Window：浏览器窗口对象，主要用于操作浏览器，浏览器中最大的对象，BOM核心对象。
+		window:innerwidth;获取当前网页可显示区域宽度，IE兼容		（document.documentElement.clientwidth）;
+		window:innerheight:获取当前网页可显示区域高度。IE兼容
+		（document.documentElementElement.clienHight）;
+		方法：
+		alert();弹出框。
+		prompt();输入框提示信息，输入框默认值。
+		confirm():确认框提示的信息
+		open();待打开的网页，窗口名，打开窗口的外观。
+		close（）；关闭当前网页。
+		 
+	location：地址栏对象，提供了对地址栏操作的方法和属性
+		location.href;设置或返回完整的URL；
+		location.search;返回URL？后面的查询部分（参数）
+		location.hash;是一个可读写的字符串，是URL的锚部分（从#开始的部分）
+		方法：
+			location.raload();刷新网页的方法，一般情况下，传递一个true，不使用缓存			刷新，缓存？。	 
+	
+
+	history：浏览器历史对象，提供了对浏览器历史对象操作的方法和属性
+		 history.lenght();返回当前窗口历史记录的数量
+		 history.forward();前进，需要后退一步，才能前进
+		 history.go(num);参数为正，前进相应的数目，为负，后退相应的数目，为0，刷新。
+		 history.back();后退，加载前一个URL；
+
+	screen：屏幕对象，获取屏幕的信息
+	navigator：浏览器对象，提供了获取浏览器信息的方法和属性；
+		navigator.appName;返回浏览器的名称。
+		navigator.appVersion;返回当前浏览器的版本号
+		navigator.platform;返回当前计算机的操作系统。
+	document：文档对象，代表整个网页，DOM的根节点；
+	onload: window.onload=function(){}当HTML都加载完才执行里面的js。
+	onscroll:滚动事件。
+		滚动条位置获取:
+			页面滚动条距离顶部的距离document.documentElement.scrollTop；兼容写法				（document.body.scrollTop）;			
+			页面滚动条距离左边的距离document.documentElement.scrollLeft;兼容写法
+			(document.body.scriollLeft);
+		工作写法：
+			var top = document.document.scrollTop || document.body.scrollTop;		onresize窗口大小改变时触发window.onresize=function(){}
+
+
+DOM文档对象模型
+	DOM作用：使JavaScript有能力操作HTML文档（获取HTML标记元素，添加HTML标记元素，删除标记		 元素等）
+	DOM分类：
+		核心DOM ：1，提供了操作HTML元素的属性和方法。2,遍历DOM树，添加新节点，删除节点		，修改节点。
+
+   	HTML DOM： 1，提供了查找改变HTML元素的属性和方法，以一种简便的方法访问DOM树
+	CSS DOM：提供了操作css的属性和方法。				
+	事件DOM：事件对象模型（如：onclick）；
+	节点关系：
+		根节点：一个HTML文档只有一个根，他就是HTML节点。
+		子节点：某一个节点的下级节点。
+		父节点：某一个节点的上级节点。
+		兄弟节点：两个节点属于一个父节点。
+	
+	DOM的选择器（访问节点方法）
+		getElementById("id名称")获取网页指定id名字的元素，返回一个对象。
+		getElementsByTagName("标签名称")获取网站指定标签名称的元素。
+		getElementsByName("标签name名称")通过标签的name值获取元素。
+		getElemrntsByClassName("标签的class属性名称")通过class名获取元素。
+		Es5选择器：只支持IE8+。
+			document.querySelector();返回匹配到的第一个元素
+			document.querySelectorAll();返回一个数组，哪怕只有一个元素。
+
+		
+
+
+DOM属性的基本操作
+元素的属性分为两种：一种叫内置属性，一种叫非内置属性。
+ 	内置属性的操作
+            innerHTML/innerText //返回值是当前元素的内容
+	    id                  //返回值是当前元素的ID
+	    title               //获取title的标签值，这个title是从document中获取的
+	    className    	//返回值是当前元素的class名称
+	    href		//返回值是当前的href的值
+	    以上的值可以获取也可以设置
+	非内置属性的获取（自定义属性）
+	setAttri（name，value）：给指定对象设置属性名和属性值
+	getAttribu（name）：获取指定对象的属性名的属性值
+	removeAttribute（name）：移除指定对象的属性	
+节点公共的属性
+	父节点.firstchild：返回第一个子节点，包含空白节点。
+	      .firstElementchild:返回第一个子节点。包含空白
+	父节点.lastchild:返回最后一个子节点（包含空白）
+	      .lastElementchild:返回最后一个子节点（不包含空白）
+	nextSibling属性返回元素节点之后的兄弟节点（包含文本节点，注释节点即回车，换行，空格，文本等等）；
+	nextElementSibling属性值=只返回元素的节点之后的兄弟元素节点（不包含文本节点，注释节点）（IE7/8不支持）
+	previousSibling属性返回元素节点之前的兄弟节点(包括文本节点，注释节点）；
+	previousElementSibling属性只返回元素节点之前的兄弟元素节点（不包含文本节点，注释节点），只读属性。（IE7/8不支持）
+	childNodes返回子节点列表（包括，文本节点，注释节点），返回一个数组
+	children：只返回标签元素节点
+	节点
+	    parentNode:返回父节点
+	其他
+	    nodeName：返回节点名字
+	    nodeValue：返回节点自身的值（针对文本节点）
+	节点创建：
+	文本节点：document.creaElement（tag标签名称）；
+	文本节点：document.createTextNode（文本内容）；
+	自定义属性设置：node。setAttribute（名称，值）;
+	节点追加：
+	父节点：appendChild（子节点）；向父节点添加最后一个子节点
+	父节点：insertBefore（newnode，oldnode）将newnode放在oldnode的前边，将节点放在指定的位置
+	节点删除：
+	父节点：removeChild（子节点）；
+	父节点：remove（）；删除自身
+css DOM
+	功能：使js可以动态给HTML添加css样式属性（行内样式）
+	语法：对象名.style.css属性转换为js后的名称=属性值；
+	css属性转化为js后的名称规则
+	1，一个单词直接写。如：color，background。
+	2，多个单词，第二个单词去掉“-”并且首字母大写；
+	font-size==》fontSize
+浏览器元素的尺寸
+	offsetParent：获取元素的最近的具有定位属性（absolute或者relative）的父级元素，如果都没有则返回body（与当前元素最近的经过定位（position不等于static）的父级元素）
+	offsetleft：表示元素的左外边框至offsetParent元素的左内边框之间的像素距离
+	offsetTop：表示元素的上外边框至offsetParent元素的上内边框之间的像素距离
+	clientwidth/clientHeight:元素视窗宽度/高度
+	clientWidth = width+左右padding
+	clientHeight = height+上下padding
+	offsetwidth/offsetHeight:元素实际宽度/高度
+	offsetWidth = width+左右padding+左右border
+	offsetHeight = height+上下padding+上下border
+
+DOM中的表单元素的属性
+	value用于大部分表单元素的内容获取（option除外）
+	type可以获取input标签的类型（输入框或复选框等）
+	disabled禁用属性
+	checked复选框选中属性
+	selected下拉菜单选中属性
+
+
+
+
+
+
+
+
+
+
+
+
+
